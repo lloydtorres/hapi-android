@@ -34,7 +34,7 @@ public class ReportActivity extends AppCompatActivity {
 
     public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-        String[] titles = { "Stats", "Positives", "Negatives" };
+        String[] titles = { "Stats", "Plus", "Minus" };
 
 
         public ViewPagerAdapter(FragmentManager manager) {
@@ -48,10 +48,12 @@ public class ReportActivity extends AppCompatActivity {
                     StatsFragment tab1 = new StatsFragment();
                     return tab1;
                 case 1:
-                    StatsFragment tab2 = new StatsFragment();
+                    StoryFragment tab2 = new StoryFragment();
+                    tab2.setTitle("What lifts you up?");
                     return tab2;
                 case 2:
-                    StatsFragment tab3 = new StatsFragment();
+                    StoryFragment tab3 = new StoryFragment();
+                    tab3.setTitle("What brings you down?");
                     return tab3;
                 default:
                     return null;

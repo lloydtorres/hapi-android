@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:contentPadding="20dp">
+    <TextView
+        android:id="@+id/header_content"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textAllCaps="true"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/black"
+        android:text="What lifts you up?" />
+</android.support.v7.widget.CardView>
