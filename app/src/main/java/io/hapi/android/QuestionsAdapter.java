@@ -1,71 +1,92 @@
 package io.hapi.android;
 
+import android.net.Uri;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.List;
 
 import io.hapi.android.models.Question;
-import io.hapi.android.models.Questions;
 
 
 public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Question> mDataset;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        public TextView mTextView;
-        public ViewHolder(TextView v) {
-            super(v);
-            mTextView = v;
-        }
+    private static final int INPUT_TYPE = 0;
+    private static final int BINARY_TYPE = 1;
+
+    private final List<Question> mQuestions;
+
+    public QuestionsAdapter(List<Question> questions) {
+        mQuestions = questions;
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public QuestionsAdapter(List<Question> myDataset) {
-        mDataset = myDataset;
-    }
-
-    // Create new views (invoked by the layout manager)
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
-        // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.question_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-        //TO DO DO
-        RecyclerView.ViewHolder vh = new QuestionViewHolder(v);
-        return vh;
+    public int getItemViewType(int position) {
+        return mQuestions.get(position).isBinaryResponse() ? BINARY_TYPE : INPUT_TYPE;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view;
+        if (viewType == INPUT_TYPE) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item_input, parent, false);
+            return new InputTypeViewHolder(view);
+        } else if (viewType == BINARY_TYPE) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item_binary, parent, false);
+            return new BinaryTypeViewHolder(view);
+        }
+        return null;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((QuestionViewHolder)holder).q.setText(mDataset.get(position).getQuestion());
+        ((QuestionBinder) holder).bind(mQuestions.get(position));
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
-
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mQuestions.size();
     }
 
-    public class QuestionViewHolder extends RecyclerView.ViewHolder {
+    private interface QuestionBinder {
+        void bind(Question question);
+    }
 
-        private TextView q;
+    public class InputTypeViewHolder extends RecyclerView.ViewHolder implements QuestionBinder {
+        private TextInputLayout mQuestionLayout;
 
-        public QuestionViewHolder(View v) {
+        public InputTypeViewHolder(View v) {
             super(v);
+            mQuestionLayout = (TextInputLayout) v.findViewById(R.id.text_input_layout);
+        }
 
-            q = (TextView) v.findViewById(R.id.info_text);
+        @Override
+        public void bind(Question question) {
+            mQuestionLayout.setHint(question.getQuestion());
+        }
+    }
+
+    public class BinaryTypeViewHolder extends RecyclerView.ViewHolder implements QuestionBinder {
+        private TextView mQuestionText;
+        private Switch mQuestionSwitch;
+
+        public BinaryTypeViewHolder(View v) {
+            super(v);
+            mQuestionSwitch = (Switch) v.findViewById(R.id.question_switch);
+            mQuestionText = (TextView) v.findViewById(R.id.question_text);
+        }
+
+        @Override
+        public void bind(Question question) {
+            mQuestionText.setText(question.getQuestion());
+            mQuestionSwitch.setOnCheckedChangeListener((view, isChecked) ->
+                    question.setBinaryResponse(isChecked));
         }
     }
 }

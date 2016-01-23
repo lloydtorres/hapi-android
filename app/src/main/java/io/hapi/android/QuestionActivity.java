@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import io.hapi.android.models.Questions;
-
 public class QuestionActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -32,7 +30,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         // specify an adapter (see also next example)
 
-        mAdapter = new QuestionsAdapter(Questions.getQuestionList());
+        mAdapter = new QuestionsAdapter(QuestionProvider.getQuestionList());
         mRecyclerView.setAdapter(mAdapter);
     }
 

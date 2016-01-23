@@ -1,9 +1,16 @@
-package io.hapi.android.models;
+package io.hapi.android;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-public class Questions {
+import io.hapi.android.models.Question;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.shuffle;
+
+public class QuestionProvider {
     private static final List<Question> QUESTION_LIST = new ArrayList<Question>() {{
         add(new Question("How was your day?", false));
         add(new Question("What was the highlight of your day?", false));
@@ -18,5 +25,13 @@ public class Questions {
 
     public static List<Question> getQuestionList() {
         return QUESTION_LIST;
+    }
+
+    public static List<Question> threeRandomQuestions() {
+        return new ArrayList<Question>() {{
+            List<Integer> indices = Arrays.asList(0, 1, 2);
+            Collections.shuffle(indices);
+            for (int index : indices) add(QUESTION_LIST.get(index));
+        }};
     }
 }
