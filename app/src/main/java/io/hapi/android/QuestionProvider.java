@@ -24,6 +24,7 @@ public class QuestionProvider {
     return QUESTION_LIST;
   }
 
+ 
   public static List<Question> getRandomQuestions(int size) {
     return new ArrayList<Question>() {{
       List<Integer> indices = new ArrayList<Integer>() {{
@@ -33,4 +34,5 @@ public class QuestionProvider {
       for (int i = 0; i < size; i++) QUESTION_LIST.get(indices.get(i));
     }};
   }
+ 
 }
