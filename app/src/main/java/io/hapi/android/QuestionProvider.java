@@ -1,14 +1,10 @@
 package io.hapi.android;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import io.hapi.android.models.Question;
-
-import static java.util.Arrays.asList;
-import static java.util.Collections.shuffle;
 
 public class QuestionProvider {
     private static final List<Question> QUESTION_LIST = new ArrayList<Question>() {{
@@ -29,9 +25,10 @@ public class QuestionProvider {
 
     public static List<Question> threeRandomQuestions() {
         return new ArrayList<Question>() {{
-            List<Integer> indices = Arrays.asList(0, 1, 2);
-            Collections.shuffle(indices);
-            for (int index : indices) add(QUESTION_LIST.get(index));
+            for (int i = 0; i < QUESTION_LIST.size(); i++) {
+                final int index = new Random().nextInt(QUESTION_LIST.size());
+                add(QUESTION_LIST.get(index));
+            }
         }};
     }
 }
