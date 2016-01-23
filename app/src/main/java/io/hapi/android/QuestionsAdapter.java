@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         View view;
         if (viewType == INPUT_TYPE) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item_input, parent, false);
+
             return new InputTypeViewHolder(view);
         } else if (viewType == BINARY_TYPE) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item_binary, parent, false);

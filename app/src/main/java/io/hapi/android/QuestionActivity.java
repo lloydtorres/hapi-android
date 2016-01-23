@@ -1,11 +1,15 @@
 package io.hapi.android;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.net.URI;
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -30,7 +34,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         // specify an adapter (see also next example)
 
-        mAdapter = new QuestionsAdapter(QuestionProvider.threeRandomQuestions());
+        mAdapter = new QuestionsAdapter(QuestionProvider.getRandomQuestions(3));
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -39,6 +43,9 @@ public class QuestionActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_question, menu);
         return true;
+    }
+    public static Intent getLaunchIntent(Uri imageUri){
+        return null;
     }
 
     @Override

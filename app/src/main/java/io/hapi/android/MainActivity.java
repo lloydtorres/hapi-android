@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
           .subscribeOn(Schedulers.io())
           .observeOn(AndroidSchedulers.mainThread())
           .subscribe(emotions -> {
+
             // Do something with the emotions
           }, error -> App.toast("Network error"));
     }
