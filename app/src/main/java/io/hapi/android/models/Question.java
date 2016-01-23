@@ -1,10 +1,5 @@
 package io.hapi.android.models;
 
-
-
-/**
- * Created by umeshkhanna on 2016-01-23.
- */
 public class Question {
     private final String mQuestion;
     private final boolean mIsBinaryResponse;
@@ -16,7 +11,6 @@ public class Question {
         mIsBinaryResponse = isBinaryResponse;
     }
 
-
     public void setResponse(String mResponse) {
         this.mResponse = mResponse;
     }
@@ -26,7 +20,6 @@ public class Question {
     }
 
     public String getQuestion() {
-
         return mQuestion;
     }
 
@@ -42,7 +35,3 @@ public class Question {
         return mBinaryResponse;
     }
 }
-
-
-
-
