@@ -25,7 +25,7 @@ public class QuestionProvider {
 
     public static List<Question> threeRandomQuestions() {
         return new ArrayList<Question>() {{
-            for (int i = 0; i < QUESTION_LIST.size(); i++) {
+            for (int i = 0; i < 3; i++) {
                 final int index = new Random().nextInt(QUESTION_LIST.size());
                 add(QUESTION_LIST.get(index));
             }
