@@ -30,7 +30,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         // specify an adapter (see also next example)
 
-        mAdapter = new QuestionsAdapter(QuestionProvider.getQuestionList());
+        mAdapter = new QuestionsAdapter(QuestionProvider.threeRandomQuestions());
         mRecyclerView.setAdapter(mAdapter);
     }
 
