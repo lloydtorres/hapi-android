@@ -1,9 +1,11 @@
 package io.hapi.android;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -12,37 +14,45 @@ import android.support.v7.widget.Toolbar;
  */
 public class ReportActivity extends AppCompatActivity {
 
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.report_toolbar);
         setSupportActionBar(toolbar);
+
+        viewPager = (ViewPager) findViewById(R.id.report_pager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
+        tabLayout = (TabLayout) findViewById(R.id.report_tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
+    public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    public class PagerAdapter extends FragmentStatePagerAdapter {
-        int mNumOfTabs;
+        String[] titles = { "Stats", "Positives", "Negatives" };
 
-        public PagerAdapter(FragmentManager fm, int NumOfTabs) {
-            super(fm);
-            this.mNumOfTabs = NumOfTabs;
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
         }
 
         @Override
         public Fragment getItem(int position) {
-
             switch (position) {
-                /*
                 case 0:
-                    TabFragment1 tab1 = new TabFragment1();
+                    StatsFragment tab1 = new StatsFragment();
                     return tab1;
                 case 1:
-                    TabFragment2 tab2 = new TabFragment2();
+                    StatsFragment tab2 = new StatsFragment();
                     return tab2;
                 case 2:
-                    TabFragment3 tab3 = new TabFragment3();
-                    return tab3;*/
+                    StatsFragment tab3 = new StatsFragment();
+                    return tab3;
                 default:
                     return null;
             }
@@ -50,7 +60,12 @@ public class ReportActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return mNumOfTabs;
+            return titles.length;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles[position];
         }
     }
 }
