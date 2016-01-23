@@ -1,10 +1,21 @@
 package io.hapi.android.models;
 
+import java.util.Date;
+
 public class Question {
     private final String mQuestion;
     private final boolean mIsBinaryResponse;
     private String mResponse;
     private boolean mBinaryResponse;
+    private Date mDateTaken;
+
+    public Date getDateTaken() {
+        return mDateTaken;
+    }
+
+    public void setDateTaken(Date dateTaken) {
+        this.mDateTaken = dateTaken;
+    }
 
     public Question(String question, boolean isBinaryResponse) {
         mQuestion = question;
