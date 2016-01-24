@@ -100,4 +100,8 @@ public class Emotions extends RealmObject {
   public void setNeutral(int neutral) {
     this.neutral = neutral;
   }
+
+  public void setScore(int score) {
+    this.score = score;
+  }
 }
