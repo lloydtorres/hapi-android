@@ -4,19 +4,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Lloyd on 2016-01-23.
  */
 public class DetailActivity extends AppCompatActivity {
     private ImageView mainPic;
-    private TextView time;
     private TextView score;
 
     private TextView s1Question;
@@ -37,9 +39,19 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        Uri uri = Uri.parse(getIntent().getStringExtra("uri"));
+        int scoreVal = getIntent().getIntExtra("score", 0);
+
+        List<String> qs = new ArrayList<String>();
+        List<String> rs = new ArrayList<String>();
+
+        for (int i=0; i<3; i++)
+        {
+            qs.add(getIntent().getStringExtra("q"+i));
+            rs.add(getIntent().getStringExtra("a"+i));
+        }
 
         mainPic = (ImageView) findViewById(R.id.detail_picture);
-        time = (TextView) findViewById(R.id.detail_date);
         score = (TextView) findViewById(R.id.detail_score);
 
         s1Question = (TextView) findViewById(R.id.story_question_1);
@@ -51,20 +63,27 @@ public class DetailActivity extends AppCompatActivity {
         s3Question = (TextView) findViewById(R.id.story_question_3);
         s3Response = (TextView) findViewById(R.id.story_response_3);
 
-        Uri imgUri = Uri.parse("android.resource://io.hapi.android/" + R.drawable.nic_cage);
-        mainPic.setImageURI(imgUri);
+        mainPic.setImageURI(uri);
+        score.setText(String.valueOf(scoreVal));
 
-        PrettyTime prettyTime = new PrettyTime();
-        time.setText(String.format("Posted %s", prettyTime.format(new Date())));
-        score.setText(String.valueOf(92));
+        s1Question.setText(qs.get(0));
+        s1Response.setText(rs.get(0));
 
-        s1Question.setText("Whatever1q");
-        s1Response.setText("Whatever1a");
+        s2Question.setText(qs.get(1));
+        s2Response.setText(rs.get(1));
 
-        s2Question.setText("Whatever2q");
-        s2Response.setText("Whatever2a");
+        s3Question.setText(qs.get(2));
+        s3Response.setText(rs.get(2));
+    }
 
-        s3Question.setText("Whatever3q");
-        s3Response.setText("Whatever3a");
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Respond to the action bar's Up/Home button
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

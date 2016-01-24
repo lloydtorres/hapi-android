@@ -11,20 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/detail_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:layout_marginTop="20dp"
-            android:textSize="15sp"
-            android:textStyle="italic"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/darker_gray"
-            tools:text="Posted moments ago"/>
 
         <TextView
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
@@ -37,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:textSize="140sp"
+            android:textSize="160sp"
             android:layout_gravity="center_horizontal"
             android:textColor="@android:color/black"
             tools:text="86"/>

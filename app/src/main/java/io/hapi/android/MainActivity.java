@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     public void updateBullshit()
     {
         List<Entry> entries = retrieveEntries();
-        mRecyclerAdapter = new GridImageAdapter(entries);
+        mRecyclerAdapter = new GridImageAdapter(this, entries);
         mRecyclerView.setAdapter(mRecyclerAdapter);
     }
 
