@@ -35,6 +35,7 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
         Toolbar toolbar = (Toolbar) findViewById(R.id.question_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
