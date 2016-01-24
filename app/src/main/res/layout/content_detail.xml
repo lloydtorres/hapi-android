@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/darker_gray"
+            tools:text="Posted moments ago"/>
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15sp"
+            android:text="Happiness Score"/>
+        <TextView
+            android:id="@+id/detail_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textSize="140sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/black"
+            tools:text="86"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            card_view:cardBackgroundColor="@android:color/white"
+            card_view:contentPadding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/story_question_1"
+                    android:layout_marginTop="8dp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    tools:text="Why you so happy?" />
+
+                <TextView
+                    android:id="@+id/story_response_1"
+                    android:layout_marginTop="8dp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    tools:text="Happy happy happy happy happy" />
+
+                <TextView
+                    android:id="@+id/story_question_2"
+                    android:layout_marginTop="16dp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    tools:text="Why you so happy?" />
+
+                <TextView
+                    android:id="@+id/story_response_2"
+                    android:layout_marginTop="8dp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    tools:text="Happy happy happy happy happy" />
+
+                <TextView
+                    android:id="@+id/story_question_3"
+                    android:layout_marginTop="16dp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    tools:text="Why you so happy?" />
+
+                <TextView
+                    android:id="@+id/story_response_3"
+                    android:layout_marginTop="8dp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    tools:text="Happy happy happy happy happy" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

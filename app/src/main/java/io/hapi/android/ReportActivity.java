@@ -23,6 +23,8 @@ public class ReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.report_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.report_pager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
