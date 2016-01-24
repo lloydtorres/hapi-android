@@ -11,6 +11,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.io.File;
 import java.io.IOException;
@@ -105,5 +108,23 @@ public class MainActivity extends AppCompatActivity {
         Realm realm = Realm.getInstance(this);
         RealmResults<Entry> res = realm.where(Entry.class).findAll();
         return res;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_trends:
+                // Open an explore dialog to keep going
+                Intent reportActivityIntent = new Intent(this, ReportActivity.class);
+                startActivity(reportActivityIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

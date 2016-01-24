@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 /**
  * Created by Lloyd on 2016-01-23.
@@ -32,6 +33,17 @@ public class ReportActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.report_tabs);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Respond to the action bar's Up/Home button
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public class ViewPagerAdapter extends FragmentStatePagerAdapter {
