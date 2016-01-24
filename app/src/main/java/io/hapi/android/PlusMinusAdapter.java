@@ -97,23 +97,17 @@ public class PlusMinusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         private TextView sQuestion;
         private TextView sResponse;
-        private TextView sDate;
 
         public StoryCard(View v) {
             super(v);
             sQuestion = (TextView) v.findViewById(R.id.story_question);
             sResponse = (TextView) v.findViewById(R.id.story_response);
-            sDate = (TextView) v.findViewById(R.id.story_date);
         }
 
         public void init(Question q)
         {
             sQuestion.setText(q.getQuestion());
             sResponse.setText(String.valueOf(q.getResponse()));
-
-            PrettyTime prettyTime = new PrettyTime();
-            sDate.setText(String.format("You posted this %s", prettyTime.format(q.getDateTaken())));
-
         }
     }
 }

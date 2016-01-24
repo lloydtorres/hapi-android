@@ -1,5 +1,6 @@
 package io.hapi.android;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,7 +98,7 @@ public class StatsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public void init(EmotionHistory h)
         {
-            final float lineWidth = 2.5f;
+            final float lineWidth = 4f;
 
             List<Integer> history = h.getHistory();
             List<Entry> entryHistory = new ArrayList<Entry>();
@@ -113,6 +114,8 @@ public class StatsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             dataSet.setDrawHighlightIndicators(false);
             dataSet.setLineWidth(lineWidth);
             dataSet.setDrawValues(false);
+            dataSet.setColor(Color.parseColor("#FF5722"));
+            dataSet.setCircleColor(Color.parseColor("#FF5722"));
 
             List<String> xLabels = new ArrayList<String>();
             for (int i=0; i < entryHistory.size(); i++)
