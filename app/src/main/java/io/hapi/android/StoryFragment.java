@@ -19,6 +19,7 @@ import io.hapi.android.models.Question;
  */
 public class StoryFragment extends Fragment {
     private String mTitle;
+    private List<Question> questions;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -27,6 +28,10 @@ public class StoryFragment extends Fragment {
     public void setTitle(String t)
     {
         mTitle = t;
+    }
+
+    public void setQuestions(List<Question> q) {
+        questions = q;
     }
 
     @Override
@@ -47,11 +52,7 @@ public class StoryFragment extends Fragment {
         List<Object> randomStuff = new ArrayList<Object>();
 
         randomStuff.add(mTitle);
-
-        Question q = new Question("Why do you even coffee?", false);
-        q.setResponse("Just cause");
-        q.setDateTaken(new Date());
-        randomStuff.add(q);
+        randomStuff.addAll(questions);
 
         mRecyclerAdapter = new PlusMinusAdapter(randomStuff);
         mRecyclerView.setAdapter(mRecyclerAdapter);
