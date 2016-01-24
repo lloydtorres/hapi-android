@@ -12,7 +12,7 @@ import io.realm.RealmObject;
 
 public class Emotions extends RealmObject {
 
-  private  int happy, sad, angry, fear, surprise, neutral;
+  private  int happy, sad, angry, fear, surprise, neutral,score;
 
   private Emotions(int happy, int sad, int angry, int fear, int surprise, int neutral) {
     this.happy = happy;
@@ -21,10 +21,15 @@ public class Emotions extends RealmObject {
     this.fear = fear;
     this.surprise = surprise;
     this.neutral = neutral;
+
   }
 
   public Emotions(){
 
+  }
+
+  public int getScore() {
+    return (happy + neutral + surprise);
   }
 
   @Nullable public static Emotions fromIndicoResult(IndicoResult indicoResult) {
