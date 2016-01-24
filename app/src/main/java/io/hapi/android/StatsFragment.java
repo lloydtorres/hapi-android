@@ -47,7 +47,7 @@ public class StatsFragment extends Fragment {
         List<Object> randomStuff = new ArrayList<Object>();
 
         EmotionHistory history = new EmotionHistory(scores);
-        Statistic s = new Statistic("Days since you started", 10);
+        Statistic s = new Statistic("Days since you started", 2);
 
         randomStuff.add(history);
         randomStuff.add(s);
