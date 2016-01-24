@@ -5,19 +5,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.List;
+
+import io.hapi.android.models.Entry;
 
 /**
  * Created by Lloyd on 2016-01-23.
  */
 public class GridImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    List<Uri> mImages;
+    List<Entry> entries;
 
-    public GridImageAdapter(List<Uri> u)
+    public GridImageAdapter(List<Entry> u)
     {
-        mImages = u;
+        entries = u;
     }
 
     @Override
@@ -31,12 +32,12 @@ public class GridImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         GridImage g = (GridImage) holder;
-        g.init(mImages.get(position));
+        g.init(Uri.parse(entries.get(position).getImageUri()));
     }
 
     @Override
     public int getItemCount() {
-        return mImages.size();
+        return entries.size();
     }
 
     public class GridImage extends RecyclerView.ViewHolder {

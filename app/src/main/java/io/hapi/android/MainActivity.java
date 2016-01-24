@@ -10,12 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import io.hapi.android.models.Entry;
+import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -38,19 +43,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Uri imgUri = Uri.parse("android.resource://io.hapi.android/" + R.drawable.nic_cage);
-        List<Uri> images = new ArrayList<Uri>();
-
-        for (int i = 0; i < 4; i++) {
-            images.add(imgUri);
-        }
-
         mRecyclerView = (RecyclerView) findViewById(R.id.main_recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new GridLayoutManager(this, 3);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerAdapter = new GridImageAdapter(images);
-        mRecyclerView.setAdapter(mRecyclerAdapter);
+        updateBullshit();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(view -> dispatchTakePictureIntent());
@@ -87,5 +84,26 @@ public class MainActivity extends AppCompatActivity {
         File image = File.createTempFile(imageFileName, ".jpg", storageDir);
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
         return image;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        updateBullshit();
+    }
+
+    public void updateBullshit()
+    {
+        List<Entry> entries = retrieveEntries();
+        mRecyclerAdapter = new GridImageAdapter(entries);
+        mRecyclerView.setAdapter(mRecyclerAdapter);
+    }
+
+    public List<Entry> retrieveEntries()
+    {
+        Realm realm = Realm.getInstance(this);
+        RealmResults<Entry> res = realm.where(Entry.class).findAll();
+        return res;
     }
 }
