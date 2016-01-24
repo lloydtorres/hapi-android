@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.ocpsoft.prettytime.PrettyTime;
-
 import java.util.List;
 
 import io.hapi.android.models.Question;

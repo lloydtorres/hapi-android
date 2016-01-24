@@ -8,10 +8,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.ocpsoft.prettytime.PrettyTime;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
