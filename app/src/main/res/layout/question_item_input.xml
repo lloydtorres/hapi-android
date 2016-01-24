@@ -2,7 +2,7 @@
 <android.support.design.widget.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/text_input_layout"
-    android:layout_height="48dp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="8dp">
 
     <EditText

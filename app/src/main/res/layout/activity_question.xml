@@ -7,7 +7,7 @@
     tools:context="io.hapi.android.QuestionActivity">
 <ImageView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="225dp"
     android:id="@+id/image_view"
     android:src="@drawable/nic_cage"
     android:layout_alignParentTop="true"/>

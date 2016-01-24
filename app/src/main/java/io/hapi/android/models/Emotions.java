@@ -32,6 +32,9 @@ public class Emotions extends RealmObject {
     return (happy + neutral + surprise);
   }
 
+  public void setScore(int score) {
+  }
+
   @Nullable public static Emotions fromIndicoResult(IndicoResult indicoResult) {
     try {
       final Map<FacialEmotion, Double> map = indicoResult.getFer();
