@@ -26,6 +26,9 @@ public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public QuestionsAdapter(List<Question> questions) {
         mQuestions = questions;
     }
+    public List<Question> getQuestions(){
+        return mQuestions;
+    }
 
     @Override
     public int getItemViewType(int position) {
@@ -61,11 +64,13 @@ public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public class InputTypeViewHolder extends RecyclerView.ViewHolder implements QuestionBinder {
-        private TextInputLayout mQuestionLayout;
+        public TextInputLayout mQuestionLayout;
+        public EditText mEditText;
 
         public InputTypeViewHolder(View v) {
             super(v);
             mQuestionLayout = (TextInputLayout) v.findViewById(R.id.text_input_layout);
+            mEditText = (EditText) v.findViewById(R.id.question_input);
         }
 
         @Override
@@ -75,8 +80,8 @@ public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public class BinaryTypeViewHolder extends RecyclerView.ViewHolder implements QuestionBinder {
-        private TextView mQuestionText;
-        private Switch mQuestionSwitch;
+        public TextView mQuestionText;
+        public Switch mQuestionSwitch;
 
         public BinaryTypeViewHolder(View v) {
             super(v);
@@ -90,5 +95,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             mQuestionSwitch.setOnCheckedChangeListener((view, isChecked) ->
                     question.setBinaryResponse(isChecked));
         }
+
     }
+
 }

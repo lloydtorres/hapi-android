@@ -2,47 +2,62 @@ package io.hapi.android.models;
 
 import java.util.Date;
 
-public class Question {
-    private final String mQuestion;
-    private final boolean mIsBinaryResponse;
-    private String mResponse;
-    private boolean mBinaryResponse;
-    private Date mDateTaken;
+import io.realm.RealmObject;
+
+public class Question extends RealmObject{
+    private  String question;
+    private  boolean isBinaryResponse;
+    private String response;
+    private boolean binaryResponse;
+    private Date dateTaken;
+
+    public Question(){
+
+    }
 
     public Date getDateTaken() {
-        return mDateTaken;
+        return dateTaken;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setIsBinaryResponse(boolean isBinaryResponse) {
+        this.isBinaryResponse = isBinaryResponse;
     }
 
     public void setDateTaken(Date dateTaken) {
-        this.mDateTaken = dateTaken;
+        this.dateTaken = dateTaken;
     }
 
     public Question(String question, boolean isBinaryResponse) {
-        mQuestion = question;
-        mIsBinaryResponse = isBinaryResponse;
+        this.question = question;
+        this.isBinaryResponse = isBinaryResponse;
     }
 
     public void setResponse(String mResponse) {
-        this.mResponse = mResponse;
+        this.response = mResponse;
     }
 
     public void setBinaryResponse(boolean mBinaryResponse) {
-        this.mBinaryResponse = mBinaryResponse;
+        this.binaryResponse = mBinaryResponse;
     }
 
     public String getQuestion() {
-        return mQuestion;
+        return question;
     }
 
     public boolean isBinaryResponse() {
-        return mIsBinaryResponse;
+        return isBinaryResponse;
     }
 
     public String getResponse() {
-        return mResponse;
+        return response;
     }
 
     public boolean getBinaryResponse() {
-        return mBinaryResponse;
+        return binaryResponse;
     }
+
 }

@@ -8,10 +8,11 @@ import java.util.Map;
 import io.indico.enums.FacialEmotion;
 import io.indico.results.IndicoResult;
 import io.indico.utils.IndicoException;
+import io.realm.RealmObject;
 
-public class Emotions {
+public class Emotions extends RealmObject {
 
-  private final int happy, sad, angry, fear, surprise, neutral;
+  private  int happy, sad, angry, fear, surprise, neutral;
 
   private Emotions(int happy, int sad, int angry, int fear, int surprise, int neutral) {
     this.happy = happy;
@@ -20,6 +21,10 @@ public class Emotions {
     this.fear = fear;
     this.surprise = surprise;
     this.neutral = neutral;
+  }
+
+  public Emotions(){
+
   }
 
   @Nullable public static Emotions fromIndicoResult(IndicoResult indicoResult) {
@@ -65,5 +70,29 @@ public class Emotions {
 
   public int getNeutral() {
     return neutral;
+  }
+
+  public void setHappy(int happy) {
+    this.happy = happy;
+  }
+
+  public void setSad(int sad) {
+    this.sad = sad;
+  }
+
+  public void setAngry(int angry) {
+    this.angry = angry;
+  }
+
+  public void setFear(int fear) {
+    this.fear = fear;
+  }
+
+  public void setSurprise(int surprise) {
+    this.surprise = surprise;
+  }
+
+  public void setNeutral(int neutral) {
+    this.neutral = neutral;
   }
 }
