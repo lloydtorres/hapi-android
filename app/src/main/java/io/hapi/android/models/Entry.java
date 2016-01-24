@@ -1,7 +1,6 @@
 package io.hapi.android.models;
 
 import java.util.Date;
-import java.util.List;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;

@@ -10,25 +10,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.google.common.collect.Lists;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import io.hapi.android.models.Entry;
 import io.realm.Realm;
-import io.realm.RealmQuery;
 import io.realm.RealmResults;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
     public void updateBullshit()
     {
         List<Entry> entries = retrieveEntries();
-        mRecyclerAdapter = new GridImageAdapter(this, entries);
+        List<Entry> actual = Lists.reverse(entries);
+        mRecyclerAdapter = new GridImageAdapter(this, actual);
         mRecyclerView.setAdapter(mRecyclerAdapter);
     }
 

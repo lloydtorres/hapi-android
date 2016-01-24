@@ -3,13 +3,12 @@ package io.hapi.android;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 import java.util.Date;
@@ -34,8 +33,8 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-
-        getSupportActionBar().hide();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.question_toolbar);
+        setSupportActionBar(toolbar);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
@@ -54,6 +53,9 @@ public class QuestionActivity extends AppCompatActivity {
         Uri imageUri = getIntent().getParcelableExtra(EXTRA_PHOTO_URI);
         ImageView userImage = (ImageView) findViewById(R.id.image_view);
         userImage.setImageURI(imageUri);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_question);
+        fab.setOnClickListener(view -> startSaveProcess());
     }
 
     private List<Question> getAnsweredQuestions(){
@@ -70,7 +72,7 @@ public class QuestionActivity extends AppCompatActivity {
         return mAdapter.getQuestions();
     }
 
-    public void onSaveButtonClick(View v){
+    public void startSaveProcess(){
         final Intent intent = getIntent();
         if (intent != null) {
             Uri imageUri = intent.getParcelableExtra(EXTRA_PHOTO_URI);
