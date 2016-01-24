@@ -105,7 +105,7 @@ public class PlusMinusAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         public void init(Question q)
         {
             sQuestion.setText(q.getQuestion());
-            sResponse.setText(String.valueOf(q.getResponse()));
+            sResponse.setText(q.isBinaryResponse() ? q.getBinaryResponse() ? "Yes" : "No" : q.getResponse());
         }
     }
 }
