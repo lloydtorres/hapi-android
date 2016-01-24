@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import io.hapi.android.models.Entry;
+import io.hapi.android.models.Question;
 
 /**
  * Created by Lloyd on 2016-01-23.
@@ -19,8 +20,7 @@ public class GridImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private List<Entry> entries;
 
-    public GridImageAdapter(Context c, List<Entry> u)
-    {
+    public GridImageAdapter(Context c, List<Entry> u) {
         context = c;
         entries = u;
     }
@@ -57,8 +57,7 @@ public class GridImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             v.setOnClickListener(this);
         }
 
-        public void init(Entry u)
-        {
+        public void init(Entry u) {
             entry = u;
             image.setImageURI(Uri.parse(entry.getImageUri()));
         }
@@ -70,10 +69,11 @@ public class GridImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             detailActivityIntent.putExtra("uri", entry.getImageUri());
             detailActivityIntent.putExtra("score", entry.getEmotion().getScore());
 
-            for (int i=0; i<3; i++)
-            {
-                detailActivityIntent.putExtra("q"+i, entry.getQuestions().get(i).getQuestion());
-                detailActivityIntent.putExtra("a"+i, entry.getQuestions().get(i).getResponse());
+            for (int i = 0; i < 3; i++) {
+                Question q = entry.getQuestions().get(i);
+                detailActivityIntent.putExtra("q" + i, q.getQuestion());
+                detailActivityIntent.putExtra("a" + i,
+                        q.isBinaryResponse() ? q.getBinaryResponse() ? "Yes" : "No" : q.getResponse());
             }
 
             context.startActivity(detailActivityIntent);
